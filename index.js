@@ -5,7 +5,7 @@ const iconv = require("iconv-lite");
 
 //env: STDID, STDPWD
 const url = "http://libauto.mingdao.edu.tw/AACourses/Web/wLogin.php";
-const delay = 1000; //爬取Meet網址的延遲(不要設太低，學校server會炸)
+const delay = 1500; //爬取Meet網址的延遲(不要設太低，學校server會炸)
 
 start(url);
 
@@ -17,7 +17,8 @@ async function start(url) {
 		console.log("Getting Table...");
 		const data = await getData(url);
 		console.log("Finish!");
-		console.log("Table:", data);
+		console.log("Table:%o", data);
+		return data
 	} catch (err) {
 		console.error(err);
 		return;
