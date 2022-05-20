@@ -18,7 +18,7 @@ async function start(url) {
 		const data = await getData(url);
 		console.log("Finish!");
 		console.log("Table:%o", data);
-		return data
+		return data;
 	} catch (err) {
 		console.error(err);
 		return;
@@ -106,8 +106,9 @@ async function getData(url) {
 				});
 
 				const form = cheerio.load(res.data);
-				const url = form(`#main div.vtC a`).text().trim();
-				const code = form(`#main div.vtC`).text().trim().split(/ +/)[1];
+				const online = form(`#main div.vtC`).text().trim().split(/ +/);
+				const url = online[0];
+				const code = online[1];
 				console.log(`Getting online info finish`);
 				return { url: url, code: code };
 			} catch (err) {
